@@ -1,36 +1,81 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+👀 Undercoders UI
 
-## Getting Started
+A modern, responsive web interface for Undercoders, a community-driven coding initiative designed to empower underrepresented youth and new learners in tech.
 
-First, run the development server:
+Built with Next.js, Material UI, and a custom design system.
 
-```bash
+🚀 Live Preview
+
+📍 Coming soon🔪 Local development: http://localhost:3000
+
+🛠️ Tech Stack
+
+Next.js — React Framework
+
+TypeScript
+
+Material UI — Component system
+
+Framer Motion (planned)
+
+GitHub Pages / Vercel (planned for deployment)
+
+🌟 Key Features
+
+⚡️ Fast, mobile-first design
+
+🎨 Custom branding with accessible theming
+
+💬 Interactive cards with hover effects
+
+📚 Modular page structure (Home, About, Programs, Blog, Connect)
+
+🔐 Future: Auth integration + Dashboard access
+
+📂 Project Structure
+
+/app
+  /about
+  /programs
+  /connect
+  layout.tsx
+  page.tsx
+/components
+  Navbar.tsx
+  SiteFooter.tsx
+  ExperienceCard.tsx
+  PillarCard.tsx
+  ...
+
+👨‍💻 Getting Started
+
+Install dependencies:
+
+npm install
+
+Run the dev server:
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open your browser: http://localhost:3000
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+📝 Future Plans
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+⚠️ Ownership & Purpose
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+This project was designed and built entirely by me, Brooke Addison, as both a personal portfolio piece and the early-stage foundation of a real initiative I'm actively developing.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+While you're welcome to browse and learn from the code, this project is not open for copying, forking, or external contributions.
 
-## Deploy on Vercel
+Undercoders is more than a template — it's a vision in motion.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+👤 Author
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Brooke AddisonFuture nonprofit CEO, developer, and visionary.Building this to uplift the next generation of coders.
+
+❤️ License
+
+MIT — free to explore and learn from, but please respect its intended purpose.
+
