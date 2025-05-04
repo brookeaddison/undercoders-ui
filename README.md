@@ -73,7 +73,7 @@ Undercoders is more than a template — it's a vision in motion.
 
 👤 Author
 
-Brooke AddisonFuture nonprofit CEO, developer, and visionary.Building this to uplift the next generation of coders.
+Brooke Addison, Future nonprofit CEO, developer, and visionary.Building this to uplift the next generation of coders.
 
 ❤️ License
 

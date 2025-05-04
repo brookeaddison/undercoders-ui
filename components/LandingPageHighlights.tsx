@@ -2,9 +2,6 @@
 
 import { Box, Typography } from "@mui/material";
 import ExperienceCard from "./ExperienceCard";
-import theme from "@/app/theme";
-
-
 
 const highlights = [
   {
@@ -44,9 +41,10 @@ const LandingPageHighlights = () => {
       >
         What to Expect
       </Typography>
+
       <Box
         sx={{
-          width: "100%", 
+          width: "100%",
           height: "10px",
           backgroundColor: "#264d3c",
           mx: "auto",
@@ -55,27 +53,35 @@ const LandingPageHighlights = () => {
           mb: 15,
         }}
       />
+
       <Box
         sx={{
           display: 'flex',
           flexWrap: 'wrap',
-          gap: 20,
           justifyContent: 'center',
-
+          gap: 10,
+          pb: 15,
         }}
       >
         {highlights.map((item, i) => (
           <Box
             key={i}
             sx={{
-              flex: '1 1 300px',
-              maxWidth: '800px',
+              width: {
+                xs: '100%',
+                sm: '360px',
+                md: '400px',
+              },
+              aspectRatio: '1 / 1', // square
+              display: 'flex',
+              flexDirection: 'column',
             }}
           >
             <ExperienceCard {...item} />
           </Box>
         ))}
       </Box>
+
     </Box>
   );
 };

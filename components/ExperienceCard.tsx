@@ -15,29 +15,37 @@ const ExperienceCard = ({ image, title, description }: ExperienceCardProps) => {
 
   return (
     <Box
-      sx={{
-        borderRadius: "16px",
-        overflow: "hidden",
-        boxShadow: hovered ? 6 : 3,
-        height: 700,
-        position: "relative",
-        transition: "all 0.3s ease",
-        backgroundColor: "#fff",
+  sx={{
+    borderRadius: "16px",
+    overflow: "hidden",
+    boxShadow: hovered ? 6 : 3,
+    position: "relative",
+    transition: "all 0.3s ease",
+    width: "100%",               // important
+    aspectRatio: "1 / 1",        // keeps it square
+  }}
+  onMouseEnter={() => setHovered(true)}
+  onMouseLeave={() => setHovered(false)}
+>
+  <Box
+    sx={{
+      position: "relative",
+      width: "100%",
+      height: "100%",
+    }}
+  >
+    <Image
+      src={image}
+      alt={title}
+      fill
+      style={{
+        objectFit: "cover",
+        transition: "transform 0.4s ease",
+        transform: hovered ? "scale(1.03)" : "scale(1)",
       }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-    >
-      {/* Image */}
-      <Image
-        src={image}
-        alt={title}
-        fill
-        style={{
-          objectFit: "cover",
-          transition: "transform 0.4s ease",
-          transform: hovered ? "scale(1.03)" : "scale(1)",
-        }}
-      />
+    />
+  </Box>
+
 
       {/* Overlay: now covers the entire card */}
       <Box
@@ -52,7 +60,7 @@ const ExperienceCard = ({ image, title, description }: ExperienceCardProps) => {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          px: 4,
+          px: 2,
           color: "#fff",
           textAlign: "center",
           fontSize: "4rem",

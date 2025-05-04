@@ -1,137 +1,149 @@
 "use client";
 
-
-import React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import Box from '@mui/material/Box';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import Typography from '@mui/material/Typography';
-
+import {
+  AppBar,
+  Toolbar,
+  Box,
+  IconButton,
+  Drawer,
+  List,
+  ListItem,
+  ListItemText,
+  ListItemButton,
+  Typography,
+  useMediaQuery
+} from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
+import { useTheme } from '@mui/material/styles';
 
 const Navbar = () => {
-    return (
-        <AppBar
-            position="static"
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('lg'));
+
+  return (
+    <AppBar
+      position="static"
+      sx={{
+        backgroundColor: '#0E2A51',
+        boxShadow: 'none',
+        height: '15vh',
+        justifyContent: 'center',
+      }}
+    >
+      <Toolbar
+        sx={{
+          height: '100%',
+          px: 6,
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+        }}
+      >
+        {/* Logo */}
+        <Link href="/" passHref style={{ textDecoration: 'none' }}>
+          <Box
             sx={{
-                backgroundColor: '#0E2A51',
-                boxShadow: 'none',
-                height: '15vh',
-                justifyContent: 'center',
+              height: '100%',
+              display: 'flex',
+              alignItems: 'center',
+              cursor: 'pointer',
             }}
-        >
-            <Toolbar
-                sx={{
-                    height: '100%',
-                    px: 6,
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                }}
+          >
+            <Box sx={{ height: '70%', width: 'auto' }}>
+              <Image
+                src="/transparenticon.png"
+                alt="Undercoders Logo"
+                width={100}
+                height={100}
+                style={{ height: '100%', width: 'auto' }}
+                priority
+              />
+            </Box>
+          </Box>
+        </Link>
+
+        {/* Mobile Drawer */}
+        {isMobile ? (
+          <>
+            <IconButton
+              edge="end"
+              color="inherit"
+              aria-label="menu"
+              onClick={() => setDrawerOpen(true)}
             >
-                {/* Logo Only */}
-                <Link href="/" passHref style={{ textDecoration: 'none' }}>
-                    <Box
-                        sx={{
-                            height: '100%', // inherits from Toolbar
-                            display: 'flex',
-                            alignItems: 'center',
-                            cursor: 'pointer',
-                        }}
-                    >
-                        <Box sx={{ height: '70%', width: 'auto' }}>
-                            <Image
-                                src="/transparenticon.png"
-                                alt="Undercoders Logo"
-                                width={100}
-                                height={100}
-                                style={{ height: '100%', width: 'auto' }}
-                                priority
-                            />
-                        </Box>
+              <MenuIcon sx={{ fontSize: '2.5rem', color: '#D4D4D4' }} />
+            </IconButton>
 
-                    </Box>
-                </Link>
-
-
-                {/* Large Horizontal Navigation */}
-                <Box
-                    sx={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: 20,
-                        pr: 15, // This adds right padding equal to 48px (6 * 8px)
-                    }}
+            <Drawer
+              anchor="right"
+              open={drawerOpen}
+              onClose={() => setDrawerOpen(false)}
+            >
+              <Box
+                sx={{ width: 250, px: 2, py: 4 }}
+                role="presentation"
+                onClick={() => setDrawerOpen(false)}
+                onKeyDown={() => setDrawerOpen(false)}
+              >
+                <List>
+                  {['Programs', 'Blog', 'About', 'Connect'].map((text) => (
+                    <ListItem key={text} disablePadding>
+                      <Link href={`/${text.toLowerCase()}`} passHref legacyBehavior>
+                        <ListItemButton component="a" sx={{
+                          '&:hover': {
+                            backgroundColor: '#f0f0f0',
+                          },
+                        }}>
+                          <ListItemText
+                            primary={text}
+                            primaryTypographyProps={{
+                              fontSize: '1.5rem',
+                              fontFamily: "'League Spartan', sans-serif",
+                            }}
+                          />
+                        </ListItemButton>
+                      </Link>
+                    </ListItem>
+                  ))}
+                </List>
+              </Box>
+            </Drawer>
+          </>
+        ) : (
+          <Box
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 20,
+              pr: 15,
+            }}
+          >
+            {['Programs', 'Blog', 'About', 'Connect'].map((text) => (
+              <Link key={text} href={`/${text.toLowerCase()}`} passHref>
+                <Typography
+                  variant="h6"
+                  sx={{
+                    fontSize: '2rem',
+                    color: '#D4D4D4',
+                    textDecoration: 'none',
+                    '&:hover': {
+                      borderBottom: '3px solid #D4D4D4',
+                    },
+                  }}
                 >
-                    <Link href="/programs" passHref>
-                        <Typography
-                            variant="h6"
-                            sx={{
-                                fontSize: '2rem',
-                                color: '#D4D4D4',
-                                textDecoration: 'none',
-                                '&:hover': {
-                                    borderBottom: '3px solid #D4D4D4',
-                                },
-                            }}
-                        >
-                            Programs
-                        </Typography>
-                    </Link>
-
-                    <Link href="/blog" passHref>
-                        <Typography
-                            variant="h6"
-                            sx={{
-                                fontSize: '2rem',
-                                color: '#D4D4D4',
-                                textDecoration: 'none',
-                                '&:hover': {
-                                    borderBottom: '3px solid #D4D4D4',
-                                },
-                            }}
-                        >
-                            Blog
-                        </Typography>
-                    </Link>
-
-                    <Link href="/about" passHref>
-                        <Typography
-                            variant="h6"
-                            sx={{
-                                fontSize: '2rem',
-                                color: '#D4D4D4',
-                                textDecoration: 'none',
-                                '&:hover': {
-                                    borderBottom: '3px solid #D4D4D4',
-                                },
-                            }}
-                        >
-                            About
-                        </Typography>
-                    </Link>
-
-                    <Link href="/connect" passHref>
-                        <Typography
-                            variant="h6"
-                            sx={{
-                                fontSize: '2rem',
-                                color: '#D4D4D4',
-                                textDecoration: 'none',
-                                '&:hover': {
-                                    borderBottom: '3px solid #D4D4D4',
-                                },
-                            }}
-                        >
-                            Connect
-                        </Typography>
-                    </Link>
-                </Box>
-
-            </Toolbar>
-        </AppBar>
-    );
+                  {text}
+                </Typography>
+              </Link>
+            ))}
+          </Box>
+        )}
+      </Toolbar>
+    </AppBar>
+  );
 };
 
 export default Navbar;
